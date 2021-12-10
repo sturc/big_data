@@ -9,7 +9,9 @@
 -e ZOOKEEPER_TICK_TIME=2000 \
 -e ZOOKEEPER_SYNC_LIMIT=2 \
 confluentinc/cp-zookeeper:7.0.0`
+
 ## Start kafka
+
 ```docker
 docker run -d \
     --net=host \
