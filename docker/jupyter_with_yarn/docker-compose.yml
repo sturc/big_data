@@ -1,0 +1,41 @@
+version: "3"
+services:
+  hadoop:
+    image: "csturm/hadoop-python:winter-term-2021java11"
+    container_name: "hadoop"
+    networks:
+      hadoop_cluster:
+        ipv4_address: "192.168.11.2"
+    ports:
+      - "8020:8020"
+      - "8042:8042"
+      - "8088:8088" 
+      - "9000:9000"
+      - "19888:19888" 
+      - "50070:50070" 
+      - "50075:50075"  
+    # stdin_open: true
+    # tty: true
+  jupyter:
+    image: "csturm/pyspark-notebook:winter-term-2021"
+    container_name: "notebook"
+    environment:
+      - HADOOP_CONF_DIR=/home/jovyan/hadoop-configs/
+      - DOCKER_BUILDKIT=0
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - "8888:8888"
+    volumes:
+       - "${DS_BD_DIR}:/home/jovyan/work"  
+       - "${DS_BD_DIR}/hadoop-configs:/home/jovyan/hadoop-configs"
+       - "./pyspark-notebook/before-notebook:/usr/local/bin/before-notebook.d/"
+    networks:
+      hadoop_cluster:
+        ipv4_address: "192.168.11.3"   
+networks:
+  hadoop_cluster:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet:  192.168.11.0/24
