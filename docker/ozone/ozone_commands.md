@@ -28,6 +28,8 @@ Login in OZONE container via `docker exec -it ozone_s3g_1 /bin/sh`
 
 On the first login execute `aws configure` and set fake credentials.
 
+Create a volume: `ozone sh volume create /vol1`
+
 ## Commands on the AWS console
 
 Create Bucket: `aws s3api --endpoint http://localhost:9878/ create-bucket --bucket=bucket1`
@@ -38,4 +40,4 @@ List the data: `aws s3 --endpoint http://localhost:9878 ls s3://bucket1/`
 
 ## Create random data
 
-`ozone freon randomkeys --numOfVolumes=10 --numOfBuckets 10 --numOfKeys 10  --replicationType=RATIS --factor=ONE
+`ozone freon randomkeys --numOfVolumes=10 --numOfBuckets 10 --numOfKeys 10  --replicationType=RATIS --factor=ONE`
