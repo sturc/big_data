@@ -17,7 +17,7 @@
 version: "3"
 services:
    writer1:
-      image: openjdk:11
+      image: openjdk:18-jdk-slim
       volumes:
         - ./ReadAndWriteData.class:/usr/src/readandwritedata/ReadAndWriteData.class
         - ./../../data/numbers.txt:/data/numbers.txt
@@ -25,7 +25,7 @@ services:
       command: ["java", "ReadAndWriteData"]
 
    writer2:
-      image: openjdk:11
+      image: openjdk:18-jdk-slim
       volumes:
         - ./ReadAndWriteData.class:/usr/src/readandwritedata/ReadAndWriteData.class
         - ./../../data/numbers2.txt:/data/numbers.txt
