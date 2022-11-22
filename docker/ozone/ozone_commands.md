@@ -26,17 +26,20 @@ On the first login execute `aws configure` and set fake credentials.
 
 Login in OZONE container via `docker exec -it ozone_s3g_1 /bin/sh`
 
-On the first login execute `aws configure` and set fake credentials.
+Install the aws client on the machine <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>.
+Execute `aws configure` and set fake credentials on the client. 
 
-Create a volume: `ozone sh volume create /vol1`
-
-## Commands on the AWS console
+## AWS console commands
 
 Create Bucket: `aws s3api --endpoint http://localhost:9878/ create-bucket --bucket=bucket1`
 
-Upload a file to the bucket: `aws s3 --endpoint http://localhost:9878 cp --storage-class REDUCED_REDUNDANCY  ../../data/iris.data  s3://bucket1/iris.data`
+Upload a file to the bucket: `aws s3api --endpoint http://localhost:9878 put-object --bucket bucket1 --storage-class REDUCED_REDUNDANCY --key iris.data --body ../../data/iris.data`
 
-List the data: `aws s3 --endpoint http://localhost:9878 ls s3://bucket1/`
+List the data: `aws s3api --endpoint http://localhost:9878 list-objects --bucket bucket1`
+
+Download the data `aws s3api --endpoint http://localhost:9878 get-object --bucket bucket1 --key iris.data ./test.data`
+
+Delete the data `aws s3api --endpoint http://localhost:9878 delete-object --bucket bucket1 --key iris.data`
 
 ## Create random data
 
