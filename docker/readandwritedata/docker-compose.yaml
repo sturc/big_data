@@ -17,17 +17,15 @@
 version: "3"
 services:
    writer1:
-      image: openjdk:18-jdk-slim
+      image: read-and-write-data-app
       volumes:
-        - ./ReadAndWriteData.class:/usr/src/readandwritedata/ReadAndWriteData.class
         - ./../../data/numbers.txt:/data/numbers.txt
       working_dir: /usr/src/readandwritedata
       command: ["java", "ReadAndWriteData"]
 
    writer2:
-      image: openjdk:18-jdk-slim
+      image: read-and-write-data-app
       volumes:
-        - ./ReadAndWriteData.class:/usr/src/readandwritedata/ReadAndWriteData.class
         - ./../../data/numbers2.txt:/data/numbers.txt
       working_dir: /usr/src/readandwritedata
       command: ["java", "ReadAndWriteData"]
