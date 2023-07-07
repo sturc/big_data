@@ -20,12 +20,8 @@ services:
       image: read-and-write-data-app
       volumes:
         - ./../../data/numbers.txt:/data/numbers.txt
-      working_dir: /usr/src/readandwritedata
-      command: ["java", "ReadAndWriteData"]
 
    writer2:
       image: read-and-write-data-app
       volumes:
         - ./../../data/numbers2.txt:/data/numbers.txt
-      working_dir: /usr/src/readandwritedata
-      command: ["java", "ReadAndWriteData"]
