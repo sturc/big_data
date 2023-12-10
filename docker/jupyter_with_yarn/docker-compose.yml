@@ -1,7 +1,7 @@
 version: "3"
 services:
   hadoop:
-    image: "csturm/hadoop-python:winter-term-2021java11"
+    image: "csturm/hadoop-python:h3.3.6-p3.9.10-j11"
     container_name: "hadoop"
     networks:
       hadoop_cluster:
@@ -11,13 +11,18 @@ services:
       - "8042:8042"
       - "8088:8088" 
       - "9000:9000"
+      - "9864:9864"
+      - "9865:9865"
+      - "9868:9868"
+      - "9870:9870"
+      - "9871:9871"
+      - "10020:10020"
       - "19888:19888" 
-      - "50070:50070" 
-      - "50075:50075"  
     # stdin_open: true
     # tty: true
   jupyter:
-    image: "csturm/pyspark-notebook:winter-term-2021"
+    #image: "quay.io/jupyter/pyspark-notebook@sha256:06c3d1db5d51f8be929f07a419b9f0374bbe7e9e22dd494e3fc2308c617c8f67"
+    image: "quay.io/jupyter/pyspark-notebook:spark-3.5.0"
     container_name: "notebook"
     environment:
       - HADOOP_CONF_DIR=/home/jovyan/hadoop-configs/
