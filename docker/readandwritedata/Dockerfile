@@ -1,4 +1,4 @@
-FROM openjdk:18-jdk-slim
+FROM amazoncorretto:21
 COPY ReadAndWriteData.java /usr/src/readandwritedata/
 WORKDIR /usr/src/readandwritedata
 RUN javac ReadAndWriteData.java

@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM amazoncorretto:21
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN javac Main.java
