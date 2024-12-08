@@ -1,7 +1,6 @@
-version: "3"
 services:
   hadoop:
-    image: "csturm/hadoop-python:h3.3.6-p3.9.10-j11"
+    image: "csturm/hadoop-python:h3.3.6-p3.9.20-j11"
     container_name: "hadoop"
     networks:
       hadoop_cluster:
@@ -21,8 +20,7 @@ services:
     # stdin_open: true
     # tty: true
   jupyter:
-    #image: "quay.io/jupyter/pyspark-notebook@sha256:06c3d1db5d51f8be929f07a419b9f0374bbe7e9e22dd494e3fc2308c617c8f67"
-    image: "quay.io/jupyter/pyspark-notebook:spark-3.5.0"
+    image: "quay.io/jupyter/pyspark-notebook:spark-3.5.3"
     container_name: "notebook"
     environment:
       - HADOOP_CONF_DIR=/home/jovyan/hadoop-configs/
