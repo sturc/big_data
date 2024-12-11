@@ -1,6 +1,6 @@
 jedi>=0.19.2
 hdfs==2.7.3
-numpy<=2.0.0
+numpy<2.0.0
 python-dateutil==2.8.2
 pytz==2024.2
 urllib3>=2.2.3
